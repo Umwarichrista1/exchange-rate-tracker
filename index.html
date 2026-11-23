@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exchange rate tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Exchange Rate tracker</h1>
+    <p>check live currency and convert money</p>
+    <section>
+        <h2>converter</h2>
+        <input type="number" id="amount" value="100" require>
+        <select name="" id="from"></select>
+        <span>to</span>
+        <select name="" id="to"></select>
+        <p id="result"></p>
+    </section>
+
+    <section>
+        <h2>All rates</h2>
+
+        <input type="text" id="search" placeholder="search e.g: RWF">
+
+        <select name="" id="region">
+            <option value="all">All regions</option>
+            <option value="africa">Africa</option>
+            <option value="major">Major</option>
+        </select>
+        
+        <select name="" id="sort">
+            <option value="code">Code A-Z</option>
+            <option value="high">Rate high to low</option>
+            <option value="low">Rate low to high </option>
+        </select>
+
+        <p id="status">loading ...</p>
+        <p id="error" hidden></p>
+    </section>
+
+    <table border="2">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Rate</th>
+            </tr>
+            
+        </thead>
+        <tbody id="rows">
+                
+            </tbody>
+    </table>
+   </section>
+
+   <footer>
+    <p>Data from <a href="https://www.exchangerate-api.com">ExchangeRate-APIs</a></p>
+   </footer>
+   <script src="app.js"></script>
+
+</body>
+</html>

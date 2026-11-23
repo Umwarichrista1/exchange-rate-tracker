@@ -1,0 +1,56 @@
+body{
+    font-family: Arial,sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: blanchedalmond ;
+    color: black;
+}
+
+h1{
+    text-align: center;
+    color: rgb(63, 41, 41);
+}
+section{
+    background: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius:8px;
+}
+
+input,select{
+    padding: 8px;
+    margin: 5px 5px 5px 0;
+    font-size: 16px;
+}
+#result {
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+#error{
+    background: pink ;
+    color: red;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+table{
+    width: 100%;
+   border-collapse: collapse; 
+}
+
+th,td {
+    padding:8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th{
+    background: blanchedalmond;
+}
+footer{
+    text-align: center;
+    font-size: 14px;
+}

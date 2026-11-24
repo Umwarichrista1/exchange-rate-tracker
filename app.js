@@ -72,7 +72,7 @@ function convert(){
     const answer = inUSD * rates[toSelect.value];
 
     resultText.textContent = 
-    amount + "" + fromSelect.value + " = " + answer.toFixed(2) + "" + toSelect.value ;
+    amount + " " + fromSelect.value + " = " + answer.toFixed(2) + " " + toSelect.value ;
 }
 
 function showTable(){

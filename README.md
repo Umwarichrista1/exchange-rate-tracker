@@ -72,14 +72,15 @@ To test failover, run `sudo systemctl stop nginx` on Web01. The site keeps worki
 - Web01: http://13.40.9.218
 - Web02: http://16.60.164.228
 
+Note: open the site with http://(not https://).
+
 ## Credentials
 
 No API key and no login are needed.
 
-## Challenges and solutions
 
-- **App stuck on "Loading":** a variable name had a capital letter typo (`toselect` and `toSelect`). I found it with the browser Console (F12) and fixed it.
+- **Page stuck on "Loading":** a missing `id` in the HTML (and a capital letter typo in a variable name) stopped the JavaScript. I found it with the browser Console (F12).
 - **Testing the error message:** the browser used a cached answer. I turned on "Disable cache" and set the Network tab to Offline.
+- **HTTPS warning on the IP:** the load balancer also has an HTTPS certificate for a domain, so `https://IP` shows a warning. I use `http://` for the IP link.
 - **Proving the load balancer works:** I used the `X-Served-By` header and `curl` to see the servers take turns.
-
 Author: Christa (GitHub: Umwarichrista1)

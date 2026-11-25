@@ -17,18 +17,30 @@ const  sortSelect = document.getElementById("sort");
 const  statusText = document.getElementById("status");
 const errorText = document.getElementById("error");
 const tableBody = document.getElementById("rows");
+const retryButton = document.getElementById("retry");
+const currencyName = new Intl.DisplayNames(["en"], { type: "currency"});
 
+function getName(code){
+    try{
+        return currencyName.of(code) || code;
+    }catch(error){
+        return code;
+    }
+}
+
+retryButton.addEventListener("click",loadRates);
 
 async function loadRates() {
     statusText.textContent = "Loading...";
     errorText.hidden = true;
+    retryButton.hidden = true;
 
 
 try{
     const response = await fetch(API_URL);
 
     if(!response.ok) {
-        throw new Error("The server answered with an error("+response.status +").");
+        throw new Error("The server answered with an error(" + response.status + ").");
     }
     const data = await response.json();
     if(data.result !=="success" || !data.rates) {
@@ -42,10 +54,17 @@ try{
 
 }catch (error){
     statusText.textContent="";
-    errorText.hidden= false;
-    errorText.textContent="could not laod rates. "+error.message + "Check your internet and refresh the page";
+    let message = error.message;
+
+    if(!navigator.onLine || error instanceof TypeError){
+        message = " no internet connection";
     }
-}
+
+    errorText.hidden= false;
+    errorText.textContent="could not laod rates. "+ message +"Check your internet and refresh the page";
+    retryButton.hidden = false;
+ }
+ }
 
 function fillDropdowns(){
     const codes = Object.keys(rates).sort();
@@ -83,7 +102,8 @@ function showTable(){
     let list = Object.entries(rates);
 
     list = list.filter(function(item){
-        return item[0].includes(search);
+        const name = getName(item[0]).toUpperCase();
+        return item[0].includes(search) || name.includes(search);
     });
 
     if (region === "africa"){
@@ -104,13 +124,14 @@ function showTable(){
             tableBody.innerHTML = "";
             if (list.length === 0){
                 const row = tableBody.insertRow();
-                row.inserCell().textContent ="No currency found";
+                row.insertCell().textContent ="No currency found";
                 return;
             }
             for (const item of list){
                 const row = tableBody.insertRow();
 
                 row.insertCell().textContent = item[0];
+                row.insertCell().textContent = getName(item[0]);
                 row.insertCell().textContent = item[1];
             }
         }    

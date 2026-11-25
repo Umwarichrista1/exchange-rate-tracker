@@ -21,7 +21,7 @@
     <section>
         <h2>All rates</h2>
 
-        <input type="text" id="search" placeholder="search e.g: RWF">
+        <input type="text" id="search" placeholder="search or name,  e.g: RWF or Euro">
 
         <select name="" id="region">
             <option value="all">All regions</option>
@@ -37,12 +37,14 @@
 
         <p id="status">loading ...</p>
         <p id="error" hidden></p>
+        <button id="retry" type="retry" hidden> Try again </button>
     </section>
 
     <table border="2">
         <thead>
             <tr>
                 <th>Code</th>
+                <th>currency name</th>
                 <th>Rate</th>
             </tr>
             

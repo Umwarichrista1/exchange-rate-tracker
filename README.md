@@ -67,7 +67,7 @@ To test failover, run `sudo systemctl stop nginx` on Web01. The site keeps worki
 
 ## Links
 
-- Demo video: ADD_LINK_HERE
+- Demo video: (https://youtu.be/dhvl7PSEqHE)
 - Live site (load balancer): http://3.8.131.233
 - Web01: http://13.40.9.218
 - Web02: http://16.60.164.228
